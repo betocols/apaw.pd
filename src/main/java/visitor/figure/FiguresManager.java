@@ -17,17 +17,17 @@ public class FiguresManager {
 
     public double totalArea() {
         double result = 0;
-        for (Figure figure : figures) {
-            result += figure.area();
-        }
+//        for (Figure figure : figures) {
+//            result += figure.area();
+//        }
         return result;
     }
 
     public double totalNumberOfSides() {
         double result = 0;
-        for (Figure figure : figures) {
-            result += figure.numberOfSides();
-        }
+//        for (Figure figure : figures) {
+//            result += figure.numberOfSides();
+//        }
         return result;
     }
 

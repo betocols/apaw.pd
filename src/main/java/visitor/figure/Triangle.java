@@ -2,13 +2,14 @@ package visitor.figure;
 
 public class Triangle extends Figure {
     private double base;
-
     private double height;
-
+    private static double SIDES_NUMBER = 3; 
+    		
     public Triangle(String description, double base, double height) {
         super(description);
         this.base = base;
         this.height = height;
+        this.sidesNumber = SIDES_NUMBER;
     }
 
 	public double getHeight() {

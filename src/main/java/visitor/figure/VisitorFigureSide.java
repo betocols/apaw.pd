@@ -13,16 +13,16 @@ public class VisitorFigureSide extends Visitor {
 	
 	@Override
 	public void visitCircle(Circle c) {
-		totalSide =+ Double.POSITIVE_INFINITY;
+		totalSide += c.getSidesNumber();
 	}
 
 	@Override
 	public void visitSquare(Square s) {
-		totalSide += + 4;
+		totalSide +=  s.getSidesNumber();
 	}
 
 	@Override
 	public void visitTriangle(Triangle v) {
-		totalSide += 3;
+		totalSide += v.getSidesNumber();
 	}
 }

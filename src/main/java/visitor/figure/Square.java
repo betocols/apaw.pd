@@ -2,10 +2,12 @@ package visitor.figure;
 
 public class Square extends Figure {
     private double side;
-
+    private static double SIDES_NUMBER = 4;
+    
     public Square(String description, double side) {
     	super(description);
         this.side = side;
+        this.sidesNumber = SIDES_NUMBER;
     }
     
 	public double getSide() {

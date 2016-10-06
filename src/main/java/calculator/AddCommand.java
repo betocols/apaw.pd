@@ -3,7 +3,7 @@ package calculator;
 import upm.jbb.IO;
 
 public class AddCommand extends CalculatorCommand {
-	private static String NAME = "addCommand"; 
+	private static String NAME = "Add"; 
 	
 	public AddCommand(Calculator calculator) {
 		super(calculator, NAME);

@@ -3,7 +3,7 @@ package calculator;
 import upm.jbb.IO;
 
 public class PrintCommand extends CalculatorCommand {
-	private static String NAME = "printCommand";
+	private static String NAME = "Print";
 	
 	public PrintCommand(Calculator calculator) {
 		super(calculator, NAME);

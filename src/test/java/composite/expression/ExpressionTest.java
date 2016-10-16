@@ -5,15 +5,15 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.upm.miw.pd.composite.expression.solution.Division;
-import es.upm.miw.pd.composite.expression.solution.Expresion;
-import es.upm.miw.pd.composite.expression.solution.Multiplicacion;
-import es.upm.miw.pd.composite.expression.solution.Numero;
-import es.upm.miw.pd.composite.expression.solution.Resta;
-import es.upm.miw.pd.composite.expression.solution.Suma;
+import composite.expression.Division;
+import composite.expression.Expression;
+import composite.expression.Multiplicacion;
+import composite.expression.Numero;
+import composite.expression.Resta;
+import composite.expression.Suma;
 
 public class ExpressionTest {
-    private Expresion exp1, exp2, exp3, exp4, exp5, exp6;
+	private Expression exp1, exp2, exp3, exp4, exp5, exp6;
 
     @Before
     public void ini() {
@@ -28,32 +28,32 @@ public class ExpressionTest {
 
     @Test
     public void testValor() {
-        assertEquals(4, this.exp1.operar());
+        assertEquals(4, this.exp1.operate());
     }
 
     @Test
     public void TestSuma() {
-        assertEquals(6, this.exp2.operar());
+        assertEquals(6, this.exp2.operate());
     }
 
     @Test
     public void testResta() {
-        assertEquals(1, this.exp3.operar());
+        assertEquals(1, this.exp3.operate());
     }
 
     @Test
     public void testMultiplicacion() {
-        assertEquals(8, this.exp4.operar());
+        assertEquals(8, this.exp4.operate());
     }
 
     @Test
     public void testDivision() {
-        assertEquals(1, this.exp5.operar());
+        assertEquals(1, this.exp5.operate());
     }
 
     @Test
     public void testCompuesto() {
-        assertEquals(1, this.exp6.operar());
+        assertEquals(1, this.exp6.operate());
     }
 
     @Test

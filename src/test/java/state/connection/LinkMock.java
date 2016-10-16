@@ -14,12 +14,12 @@ public final class LinkMock implements Link {
     }
 
     @Override
-    public void send(String msg) {
+    public void enviar(String msg) {
         this.msg = msg;
     }
 
     @Override
-    public void receive(int respuesta) {
+    public void recibir(int respuesta) {
         this.respuesta = respuesta;
     }
 

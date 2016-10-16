@@ -8,40 +8,40 @@ public class StateClose extends State {
 	}
 
 	@Override
-	public void open(Connection connection) {
+	public void open(Conexion connection) {
 		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
 
 	@Override
-	public void close(Connection connection) {
-		if (connection.getEstado() == StateEnum.CLOSED) {
-		} else if (connection.getEstado() == StateEnum.STOPPED) {
+	public void close(Conexion connection) {
+		if (connection.getEstado() == Estado.CERRADO) {
+		} else if (connection.getEstado() == Estado.PARADO) {
 			throw new UnsupportedOperationException("Acción no permitida... ");
-		} else if (connection.getEstado() == StateEnum.PREPARED) {
-			connection.setEstado(StateEnum.CLOSED);
-		} else if (connection.getEstado() == StateEnum.WAITING) {
+		} else if (connection.getEstado() == Estado.PREPARADO) {
+			connection.setEstado(Estado.CERRADO);
+		} else if (connection.getEstado() == Estado.ESPERANDO) {
 			throw new UnsupportedOperationException("Acción no permitida... ");
 		}
 	}
 
 	@Override
-	public void stop(Connection connection) {
+	public void stop(Conexion connection) {
 		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
 
 	@Override
-	public void initialize(Connection connection) {
+	public void initialize(Conexion connection) {
 		throw new UnsupportedOperationException("Acción no permitida... ");
 	}
 
 	@Override
-	public void send(Connection connection, String msg) {
+	public void send(Conexion connection, String msg) {
 		throw new UnsupportedOperationException("Acción no permitida... ");
 
 	}
 
 	@Override
-	public void receive(Connection connection, int response) {
+	public void receive(Conexion connection, int response) {
 		throw new UnsupportedOperationException("Acción no permitida... ");
 
 	}

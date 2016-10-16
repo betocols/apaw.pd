@@ -1,14 +1,14 @@
 package state.connection;
 
-public class Connection {
-	private StateEnum estado;
+public class Conexion {
+	private Estado estado;
 	private Link link;
 	private State state;
 	
-	public Connection(Link link) {
+	public Conexion(Link link) {
 		assert link != null;
 		this.link = link;
-		this.estado = StateEnum.CLOSED;
+		this.estado = Estado.CERRADO;
 		setState(new StateOpen());
 	}
 
@@ -16,11 +16,11 @@ public class Connection {
 		return link;
 	}
 
-	public StateEnum getEstado() {
+	public Estado getEstado() {
 		return this.estado;
 	}
 
-    protected void setEstado(StateEnum estado) {
+    protected void setEstado(Estado estado) {
         this.estado = estado;
     }
 

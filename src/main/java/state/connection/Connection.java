@@ -1,11 +1,11 @@
 package state.connection;
 
-public class Conection {
+public class Connection {
 	private StateEnum estado;
 	private Link link;
 	private State state;
 	
-	public Conection(Link link) {
+	public Connection(Link link) {
 		assert link != null;
 		this.link = link;
 		this.estado = StateEnum.CLOSED;

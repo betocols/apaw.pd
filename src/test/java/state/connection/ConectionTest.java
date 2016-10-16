@@ -7,37 +7,37 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class ConectionTest {
-    private Conection Conection;
+    private Connection connection;
 
     private LinkMock link;
 
     @Before
     public void ini() {
         this.link = new LinkMock();
-        this.Conection = new Conection(this.link);
+        this.connection = new Connection(this.link);
     }
 
     @Test
     public void testStateEnumInicial() {
-        assertEquals(StateEnum.CLOSED, this.Conection.getEstado());
+        assertEquals(StateEnum.CLOSED, this.connection.getEstado());
     }
 
     @Test
     public void testCerradoAbrir() {
-        this.Conection.abrir();
-        assertEquals(StateEnum.PREPARED, this.Conection.getEstado());
+        this.connection.abrir();
+        assertEquals(StateEnum.PREPARED, this.connection.getEstado());
     }
 
     @Test
     public void testCerradoCerrar() {
-        this.Conection.cerrar();
-        assertEquals(StateEnum.CLOSED, this.Conection.getEstado());
+        this.connection.cerrar();
+        assertEquals(StateEnum.CLOSED, this.connection.getEstado());
     }
 
     @Test
     public void testCerradoNoSoportadoParar() {
         try {
-            this.Conection.parar();
+            this.connection.parar();
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -47,7 +47,7 @@ public class ConectionTest {
     @Test
     public void testCerradoNoSoportadoIniciar() {
         try {
-            this.Conection.iniciar();
+            this.connection.iniciar();
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -57,7 +57,7 @@ public class ConectionTest {
     @Test
     public void testCerradoNoSoportadoEnviar() {
         try {
-            this.Conection.enviar("");
+            this.connection.enviar("");
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -67,7 +67,7 @@ public class ConectionTest {
     @Test
     public void testCerradoNoSoportadoRecibir() {
         try {
-            this.Conection.recibir(0);
+            this.connection.recibir(0);
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -76,45 +76,45 @@ public class ConectionTest {
 
     @Test
     public void testPreparadoAbrir() {
-        this.Conection.abrir();
-        this.Conection.abrir();
-        assertEquals(StateEnum.PREPARED, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.abrir();
+        assertEquals(StateEnum.PREPARED, this.connection.getEstado());
     }
 
     @Test
     public void testPreparadoCerrar() {
-        this.Conection.abrir();
-        this.Conection.cerrar();
-        assertEquals(StateEnum.CLOSED, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.cerrar();
+        assertEquals(StateEnum.CLOSED, this.connection.getEstado());
     }
 
     @Test
     public void testPreparadoParar() {
-        this.Conection.abrir();
-        this.Conection.parar();
-        assertEquals(StateEnum.STOPPED, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.parar();
+        assertEquals(StateEnum.STOPPED, this.connection.getEstado());
     }
 
     @Test
     public void testPreparadoIniciar() {
-        this.Conection.abrir();
-        this.Conection.iniciar();
-        assertEquals(StateEnum.PREPARED, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.iniciar();
+        assertEquals(StateEnum.PREPARED, this.connection.getEstado());
     }
 
     @Test
     public void testPreparadoEnviar() {
-        this.Conection.abrir();
-        this.Conection.enviar("...");
-        assertEquals(StateEnum.WAITING, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.enviar("...");
+        assertEquals(StateEnum.WAITING, this.connection.getEstado());
         assertEquals("...", link.getMsg());
     }
 
     @Test
     public void testPreparadoNoSoportadoRecibir() {
-        this.Conection.abrir();
+        this.connection.abrir();
         try {
-            this.Conection.recibir(0);
+            this.connection.recibir(0);
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -123,10 +123,10 @@ public class ConectionTest {
     
     @Test
     public void testParadoNoSoportadoAbrir() {
-        this.Conection.abrir();
-        this.Conection.parar();
+        this.connection.abrir();
+        this.connection.parar();
         try {
-            this.Conection.abrir();
+            this.connection.abrir();
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -135,10 +135,10 @@ public class ConectionTest {
 
     @Test
     public void testParadoNoSoportadoCerrar() {
-        this.Conection.abrir();
-        this.Conection.parar();
+        this.connection.abrir();
+        this.connection.parar();
         try {
-            this.Conection.cerrar();
+            this.connection.cerrar();
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -147,26 +147,26 @@ public class ConectionTest {
 
     @Test
     public void testParadoParar() {
-        this.Conection.abrir();
-        this.Conection.parar();
-        this.Conection.parar();
-        assertEquals(StateEnum.STOPPED, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.parar();
+        this.connection.parar();
+        assertEquals(StateEnum.STOPPED, this.connection.getEstado());
     }
 
     @Test
     public void testParadoIniciar() {
-        this.Conection.abrir();
-        this.Conection.parar();
-        this.Conection.iniciar();
-        assertEquals(StateEnum.PREPARED, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.parar();
+        this.connection.iniciar();
+        assertEquals(StateEnum.PREPARED, this.connection.getEstado());
     }
 
     @Test
     public void testParadoNoSoportadoEnviar() {
-        this.Conection.abrir();
-        this.Conection.parar();
+        this.connection.abrir();
+        this.connection.parar();
         try {
-            this.Conection.enviar("");
+            this.connection.enviar("");
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -175,10 +175,10 @@ public class ConectionTest {
     
     @Test
     public void testParadoNoSoportadoRecibir() {
-        this.Conection.abrir();
-        this.Conection.parar();
+        this.connection.abrir();
+        this.connection.parar();
         try {
-            this.Conection.recibir(0);
+            this.connection.recibir(0);
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -187,10 +187,10 @@ public class ConectionTest {
     
     @Test
     public void testEsperandoNoSoportadoAbrir(){
-        this.Conection.abrir();
-        this.Conection.enviar("");
+        this.connection.abrir();
+        this.connection.enviar("");
         try {
-            this.Conection.abrir();
+            this.connection.abrir();
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -199,10 +199,10 @@ public class ConectionTest {
     
     @Test
     public void testEsperandoNoSoportadoCerrar(){
-        this.Conection.abrir();
-        this.Conection.enviar("");
+        this.connection.abrir();
+        this.connection.enviar("");
         try {
-            this.Conection.cerrar();
+            this.connection.cerrar();
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -211,10 +211,10 @@ public class ConectionTest {
     
     @Test
     public void testEsperandoNoSoportadoParar(){
-        this.Conection.abrir();
-        this.Conection.enviar("");
+        this.connection.abrir();
+        this.connection.enviar("");
         try {
-            this.Conection.parar();
+            this.connection.parar();
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -223,10 +223,10 @@ public class ConectionTest {
     
     @Test
     public void testEsperandoNoSoportadoIniciar(){
-        this.Conection.abrir();
-        this.Conection.enviar("");
+        this.connection.abrir();
+        this.connection.enviar("");
         try {
-            this.Conection.iniciar();
+            this.connection.iniciar();
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -235,10 +235,10 @@ public class ConectionTest {
     
     @Test
     public void testEsperandoNoSoportadoEnviar(){
-        this.Conection.abrir();
-        this.Conection.enviar("");
+        this.connection.abrir();
+        this.connection.enviar("");
         try {
-            this.Conection.enviar("");
+            this.connection.enviar("");
             fail();
         } catch (UnsupportedOperationException ignored) {
             ignored.toString();
@@ -247,18 +247,18 @@ public class ConectionTest {
     
     @Test
     public void testEsperandoRecibirACK() {
-        this.Conection.abrir();
-        this.Conection.enviar("...");
-        this.Conection.recibir(Link.ACK);
-        assertEquals(StateEnum.PREPARED, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.enviar("...");
+        this.connection.recibir(Link.ACK);
+        assertEquals(StateEnum.PREPARED, this.connection.getEstado());
     }
 
     @Test
     public void testEsperandoRecibirError() {
-        this.Conection.abrir();
-        this.Conection.enviar("...");
-        this.Conection.recibir(1);
-        assertEquals(StateEnum.CLOSED, this.Conection.getEstado());
+        this.connection.abrir();
+        this.connection.enviar("...");
+        this.connection.recibir(1);
+        assertEquals(StateEnum.CLOSED, this.connection.getEstado());
     }
 
 

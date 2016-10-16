@@ -3,6 +3,6 @@ package state.connection;
 public interface Link {
     static final int ACK = 0;
 
-    void enviar(String msg);
-    void recibir (int respuesta);
+    void send(String msg);
+    void receive (int response);
 }
